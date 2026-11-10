@@ -1,0 +1,16 @@
+{
+  "name": "interview-review-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev 前端",
+    "docs:build": "vitepress build 前端",
+    "docs:preview": "vitepress preview 前端",
+    "docs:serve": "vitepress build 前端 && vitepress preview 前端"
+  },
+  "devDependencies": {
+    "vite": "^5.4.21",
+    "vitepress": "^1.6.4"
+  }
+}

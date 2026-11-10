@@ -1,0 +1,16 @@
+# 依赖
+node_modules/
+.pnpm-store/
+
+# 构建产物与缓存
+dist/
+**/.vitepress/cache/
+**/.vitepress/dist/
+
+# 日志与编辑器
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
