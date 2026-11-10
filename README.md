@@ -75,3 +75,26 @@ git push -u origin main
 BASE_PATH=/<仓库名>/ npm run docs:build
 # 然后把 dist/ 整个推到 gh-pages 分支
 ```
+
+## 本机环境备忘（推送相关）
+
+这台机器的 GitHub 访问有两个坑，已经处理过：
+
+1. **HTTPS 走不通**：系统代理是 TUN 模式（DNS 解析到 `198.18.0.22`），git 的 schannel 后端握手失败。本仓库已设置：
+   - `http.sslBackend = openssl`
+   - `http.sslCAInfo = C:\Program Files\Git\mingw64\etc\ssl\certs\ca-bundle.crt`
+
+2. **SSH 22 端口被代理关闭**，改走 GitHub 的 443 端口。`~/.ssh/config` 里已配置：
+
+   `
+   Host github.com
+     HostName ssh.github.com
+     Port 443
+     User git
+     IdentityFile C:/Users/1/.ssh/id_rsa
+     IdentitiesOnly yes
+   `
+
+   remote 用的是 SSH：`git@github.com:Silencer-1984/qianduan-note.git`
+
+注意：生效的是 `id_rsa`，`id_ed25519` 没有加到 GitHub。
