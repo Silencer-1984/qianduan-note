@@ -95,6 +95,8 @@ BASE_PATH=/qianduan-note/ npm run docs:build
 
 3. **GitHub 访问**：系统代理是 TUN 模式（DNS 解析到 `198.18.0.22`），HTTPS 的 schannel 握手失败；SSH 22 也被关。本仓库已设 `http.sslBackend = openssl` + Git 自带 CA，`~/.ssh/config` 让 `github.com` 走 `ssh.github.com:443`，用 `id_rsa`（`id_ed25519` 未加到 GitHub）。remote：`git@github.com:Silencer-1984/qianduan-note.git`。
 
+4. **新增 / 重命名 / 删除 md 后要重启 `docs:dev`**：`chapters.mjs` 只在 VitePress 启动时执行一次，页面清单和 `rewrites` 会缓存在内存里；运行中改文件名，旧路径继续 404，而 curl 可能仍返回 200（那是 Vite 的 SPA fallback，不代表页面存在）。CI 每次都是全新构建，不受影响。重命名后 `slug` 由编号决定（如 `02 xxx.md` → `be-02.html`），URL 不变。
+
 ## 相关站点
 
 另一个独立仓库 `Silencer-1984/mianshiti`（<https://silencer-1984.github.io/mianshiti/>）是**大题库刷题站**（AI Agent 151 题 / Python 201 题 / React），与本库的「体系化精编」定位互补，不合并。
