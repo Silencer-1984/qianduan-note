@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "docs:dev": "vitepress dev 前端",
-    "docs:build": "vitepress build 前端",
-    "docs:preview": "vitepress preview 前端",
-    "docs:serve": "vitepress build 前端 && vitepress preview 前端"
+    "docs:dev": "vitepress dev .",
+    "docs:build": "vitepress build .",
+    "docs:preview": "vitepress preview .",
+    "docs:serve": "vitepress build . && vitepress preview ."
   },
   "devDependencies": {
     "vite": "^5.4.21",
